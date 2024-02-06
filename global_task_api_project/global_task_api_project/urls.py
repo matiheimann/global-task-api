@@ -17,11 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from global_task_api_app.views import PersonViewSet
+from global_task_api_app.views import PersonViewSet, OfficerViewSet, VehicleViewSet
 
 router = DefaultRouter()
 
 router.register(r'persons', PersonViewSet)
+router.regiser(r'officers', OfficerViewSet)
+router.regiser(r'vehicles', VehicleViewSet)
 
 urlpatterns = [
     path('', include(router.urls))
