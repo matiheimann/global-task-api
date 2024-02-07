@@ -41,5 +41,6 @@ class LoginView(APIView):
                 return HttpResponseBadRequest('Invalid login')
 
 
-def LogoutView(request):
-    logout(request)
+class LogoutView(APIView):
+    def post(self, request):
+        logout(request=request)
