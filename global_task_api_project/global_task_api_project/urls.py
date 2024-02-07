@@ -22,8 +22,8 @@ from global_task_api_app.views import PersonViewSet, OfficerViewSet, VehicleView
 router = DefaultRouter()
 
 router.register(r'persons', PersonViewSet)
-router.regiser(r'officers', OfficerViewSet)
-router.regiser(r'vehicles', VehicleViewSet)
+router.register(r'officers', OfficerViewSet)
+router.register(r'vehicles', VehicleViewSet)
 
 urlpatterns = [
     path('', include(router.urls))

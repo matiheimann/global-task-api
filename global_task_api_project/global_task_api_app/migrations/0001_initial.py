@@ -19,21 +19,4 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(primary_key=True, serialize=False)),
             ],
         ),
-        migrations.CreateModel(
-            name='Person',
-            fields=[
-                ('name', models.CharField(max_length=100)),
-                ('email', models.CharField(max_length=100, primary_key=True, serialize=False)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Vehicle',
-            fields=[
-                ('name', models.CharField(max_length=100)),
-                ('brand', models.CharField(max_length=100)),
-                ('color', models.CharField(max_length=100)),
-                ('plate', models.CharField(max_length=100, primary_key=True, serialize=False)),
-                ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='global_task_api_app.person')),
-            ],
-        ),
     ]

@@ -3,7 +3,8 @@ from django.db import models
 # Create your models here.
 class Person(models.Model):
     name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100, primary_key=True)
+    email = models.CharField(max_length=100)
+    id = models.AutoField(primary_key=True)
 
 class Vehicle(models.Model):
     name = models.CharField(max_length=100)
