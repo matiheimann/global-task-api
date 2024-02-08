@@ -19,6 +19,11 @@ class VehicleSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class OfficerSerializer(serializers.ModelSerializer): 
+    password = serializers.CharField(write_only=True)
     class Meta: 
         model = Officer
-        fields = '__all__'
+        fields = ['id', 'name', 'password']
+
+    def create(self, validated_data):
+        user = Officer.objects.create_officer(**validated_data)
+        return user

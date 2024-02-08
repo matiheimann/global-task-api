@@ -111,8 +111,10 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'AUTH_HEADER_TYPES': ('JWT',),
+    'AUTH_HEADER_TYPES': ('Bearer',),
 }
+
+AUTH_USER_MODEL = 'global_task_api_app.Officer'
 
 
 # Internationalization
