@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Person, Vehicle, Officer
+from .models import Person, Vehicle, Officer, Infraction
 import re
 
 class PersonSerializer(serializers.ModelSerializer): 
@@ -27,3 +27,8 @@ class OfficerSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = Officer.objects.create_officer(**validated_data)
         return user
+
+class InfractionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Infraction
+        fields = ['timestamp', 'plate', 'comments']

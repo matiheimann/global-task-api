@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from global_task_api_app.views import PersonViewSet, OfficerViewSet, VehicleViewSet, LoginView, LogoutView, CreateInfractionView
+from global_task_api_app.views import PersonViewSet, OfficerViewSet, VehicleViewSet, LoginView, LogoutView, CreateInfractionView, GetInfractionsView
 
 router = DefaultRouter()
 
@@ -29,5 +29,6 @@ urlpatterns = [
     path('', include(router.urls)),
     path('login', LoginView.as_view(), name='login'),
     path('logout', LogoutView.as_view(), name='logout'),
-    path('create_infraction', CreateInfractionView.as_view(), name='create_infraction')
+    path('create_infraction', CreateInfractionView.as_view(), name='create_infraction'),
+    path('get_infractions', GetInfractionsView.as_view(), name='get_infractions')
 ]
