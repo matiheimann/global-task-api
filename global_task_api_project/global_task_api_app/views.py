@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets, pagination
 from .models import Person, Officer, Vehicle, Infraction
-from .serializers import OfficerSerializer, PersonSerializer, VehicleSerializer
+from .serializers import OfficerSerializer, PersonSerializer, VehicleSerializer, InfractionSerializer
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseBadRequest, HttpResponseNotFound
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -74,3 +74,17 @@ class CreateInfractionView(APIView):
         Infraction.objects.create(officer=officer, plate=vehicle, timestamp=timestamp, comments=comments)
         
         return Response('Infraction created')
+
+class GetInfractionsView(APIView): 
+    permission_classes = [AllowAny]
+
+    def get(self, request): 
+        email = request.GET.get('email')
+
+        if email is None: 
+            return HttpResponseBadRequest('Email is required')
+
+        queryset = Infraction.objects.filter(plate__owner__email=email)
+        serializer = InfractionSerializer(queryset, many=True)
+        
+        return Response(serializer.data)
